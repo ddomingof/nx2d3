@@ -1,0 +1,4 @@
+.idea
+.DS_Store
+src/nx2d3/nx2d3.egg-info
+src/nx2d3/__pycache__

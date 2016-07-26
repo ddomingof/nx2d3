@@ -9,11 +9,21 @@ __all__ = ['embed_networkx']
 DEFAULT = """
 var process_nx = function(d3, chart_id, graph, width, height) {
     var color = d3.scale.category20();
+    var highlight_color = "#4EB2D4";
+    var highlight_trans = 0.1;
+    var min_zoom = 0.4, max_zoom = 7;
+
 
     var force = d3.layout.force()
         .charge(-200)
         .linkDistance(40)
         .size([width, height]);
+        
+    var zoom = d3.behavior.zoom().scaleExtent([min_zoom, max_zoom]);
+    // g = svg object where the graph will be appended
+    var g = svg.append("g");
+    svg.style("cursor", "move");
+
 
     var svg = d3.select('#' + chart_id).append("svg")
         .attr("width", width)
